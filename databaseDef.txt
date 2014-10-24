@@ -1,0 +1,86 @@
+-- phpMyAdmin SQL Dump
+-- version 2.8.0.1
+-- http://www.phpmyadmin.net
+-- 
+-- Host: custsql-ipg17.eigbox.net
+-- Generation Time: Oct 24, 2014 at 11:35 AM
+-- Server version: 5.5.32
+-- PHP Version: 4.4.9
+-- 
+-- Database: `cs_soft_eng`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `class_list`
+-- 
+
+CREATE TABLE `class_list` (
+  `number` varchar(5) NOT NULL,
+  `section` varchar(25) NOT NULL,
+  `time` varchar(25) NOT NULL,
+  `room` varchar(35) NOT NULL,
+  `instructor` varchar(50) NOT NULL,
+  PRIMARY KEY (`number`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `class_num`
+-- 
+
+CREATE TABLE `class_num` (
+  `subject_area` varchar(5) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `number` varchar(5) NOT NULL,
+  `credits` int(11) NOT NULL,
+  PRIMARY KEY (`number`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `classlist`
+-- 
+
+CREATE TABLE `classlist` (
+  `number` int(5) NOT NULL,
+  `section` varchar(25) NOT NULL,
+  `days` varchar(10) NOT NULL,
+  `start_time` varchar(5) NOT NULL,
+  `end_time` varchar(5) NOT NULL,
+  `room` varchar(35) NOT NULL,
+  `instructor` varchar(50) NOT NULL,
+  PRIMARY KEY (`number`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `schedule`
+-- 
+
+CREATE TABLE `schedule` (
+  `entry` int(11) NOT NULL,
+  `stu_num_rand` int(11) NOT NULL,
+  `num_hours` int(11) NOT NULL,
+  `days` varchar(10) NOT NULL,
+  `class_num` int(11) NOT NULL,
+  `class_sec` varchar(1) NOT NULL,
+  `class2_num` int(11) NOT NULL,
+  `class2_sec` varchar(1) NOT NULL,
+  `class3_num` int(11) NOT NULL,
+  `class3_sec` varchar(1) NOT NULL,
+  `class4_num` int(11) NOT NULL,
+  `class4_sec` varchar(1) NOT NULL,
+  `class5_num` int(11) NOT NULL,
+  `class5_sec` varchar(1) NOT NULL,
+  `class6_num` int(11) NOT NULL,
+  `class6_sec` varchar(1) NOT NULL,
+  `class7_num` int(11) NOT NULL,
+  `class7_sec` varchar(1) NOT NULL,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`entry`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
