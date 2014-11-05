@@ -16,7 +16,7 @@ echo '<br>';
 while($count > 0){
 	$count--;
 	$row = mysql_fetch_row($res);
-	echo $row[0].' '.$row[1].' '.$row[2].' '.$row[3].' '.$row[4].'<br>';
+	//echo $row[0].' '.$row[1].' '.$row[2].' '.$row[3].' '.$row[4].'<br>';
 
 }
 
@@ -27,6 +27,10 @@ while($count > 0){
 <html>
 <body>
 Hello
+<?php 
+echo '<br>'.rand();
+include 'queries/get_times.php';
+echo 'Test'; ?>
 </body>
 </html>
 
