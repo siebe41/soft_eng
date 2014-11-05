@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: custsql-ipg17.eigbox.net
--- Generation Time: Oct 24, 2014 at 11:35 AM
+-- Generation Time: Nov 05, 2014 at 09:58 AM
 -- Server version: 5.5.32
 -- PHP Version: 4.4.9
 -- 
@@ -47,7 +47,6 @@ CREATE TABLE `class_num` (
 
 CREATE TABLE `classlist` (
   `number` int(5) NOT NULL,
-  `section` varchar(25) NOT NULL,
   `days` varchar(10) NOT NULL,
   `start_time` varchar(5) NOT NULL,
   `end_time` varchar(5) NOT NULL,
@@ -63,24 +62,18 @@ CREATE TABLE `classlist` (
 -- 
 
 CREATE TABLE `schedule` (
-  `entry` int(11) NOT NULL,
+  `entry` int(11) NOT NULL AUTO_INCREMENT,
   `stu_num_rand` int(11) NOT NULL,
   `num_hours` int(11) NOT NULL,
   `days` varchar(10) NOT NULL,
-  `class_num` int(11) NOT NULL,
-  `class_sec` varchar(1) NOT NULL,
-  `class2_num` int(11) NOT NULL,
-  `class2_sec` varchar(1) NOT NULL,
-  `class3_num` int(11) NOT NULL,
-  `class3_sec` varchar(1) NOT NULL,
-  `class4_num` int(11) NOT NULL,
-  `class4_sec` varchar(1) NOT NULL,
-  `class5_num` int(11) NOT NULL,
-  `class5_sec` varchar(1) NOT NULL,
-  `class6_num` int(11) NOT NULL,
-  `class6_sec` varchar(1) NOT NULL,
-  `class7_num` int(11) NOT NULL,
-  `class7_sec` varchar(1) NOT NULL,
+  `class_num` int(11) NOT NULL DEFAULT '0',
+  `class2_num` int(11) NOT NULL DEFAULT '0',
+  `class3_num` int(11) NOT NULL DEFAULT '0',
+  `class4_num` int(11) NOT NULL DEFAULT '0',
+  `class5_num` int(11) NOT NULL DEFAULT '0',
+  `class6_num` int(11) NOT NULL DEFAULT '0',
+  `class7_num` int(11) NOT NULL DEFAULT '0',
   `score` int(11) NOT NULL,
+  `num_classes` int(2) NOT NULL,
   PRIMARY KEY (`entry`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

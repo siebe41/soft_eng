@@ -23,6 +23,11 @@ while($size > $count){
 	
 	
 }
+//check time logic
+//if start time 1 == start time 2 => same time
+//if end time 1 == end time 2 => same time
+//if start time 1 > start time 2 && end time 1 < end time 2 => same time -- ex geo lab, 1-3:50 this would apply to 2-2:50 classes
+
 
 ?>
 
