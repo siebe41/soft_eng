@@ -1,0 +1,75 @@
+<html>
+<head>
+        <title>Class Scheduler</title>
+       <!-- <script type="text/javascript" src="final.js"></script>
+        <link rel="stylesheet" type="text/css" href="final.css"> -->
+		<style>
+#list {
+width 450px;
+float: left;
+    margin: 5px;
+}
+#list2 {
+width 450px;
+    float: left;
+    margin: 5px;
+}
+#button {
+	float: top;
+}
+#list3 {
+width: 1000px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	function displayClasses () {
+		$.ajax({
+		  type: "POST",
+		  url: "project.php",
+		  success: function(result){$("#list").html(result); $(".tableData").click(function(){
+			if($(this).css("background-color") == "rgba(0, 0, 0, 0)") {
+				$(this).css("background-color","yellow");
+			}
+			else {
+				$(this).css("background-color","rgba(0, 0, 0, 0)");
+			}
+				})}
+		});	
+	}
+	displayClasses();
+	function makeRequest () {
+		$.ajax({
+		  type: "POST",
+		  url: "project2.php",
+		  data: {tableData:TableDataString},
+		  success: function(result){$("#list2").html(result);}
+		});
+	}
+	var TableDataString = [];
+	function makeArray() {
+		var TableData = [];
+		var i = 0;
+		$('#sampleTbl tr').each(function(row, tr){
+			if($(this).find(".tableData").css("background-color") != "rgba(0, 0, 0, 0)") {
+				TableData[i]=$(tr).text();
+				i++;
+			}
+		});
+		TableDataString = JSON.stringify(TableData, null, true);
+	}
+	$("#button").click(function () {makeArray(); makeRequest();});
+   // jQuery methods go here...
+
+});
+</script>
+</head>
+<body>
+<button id = "button" type="button">Add Classes</button>
+<div id = "list3">
+<div id = "list"></div>
+<div id = "list2"></div>
+</div>
+</body>
+</html>

@@ -28,9 +28,7 @@ while($count > 0){
 <body>
 Hello
 <?php 
-echo '<br>'.rand();
-include 'queries/get_times.php';
-echo 'Test'; ?>
+?>
 </body>
 </html>
 
