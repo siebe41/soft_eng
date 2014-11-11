@@ -1,11 +1,10 @@
 <?php
 include 'connection.php';
-$tableData = $_POST['tableData'];
-$newArray = json_decode($tableData,TRUE);
-$ids = join("', '", $newArray);
-$q = "SELECT `number`
-FROM `class_num` 
-WHERE `name` IN ('$ids')
+$major = $_POST['major'];
+$q = "SELECT DISTINCT `name`
+FROM `class_num`
+WHERE `subject_area` = '$major[0]'
+ORDER BY `name` 
 ";
 if ($result = mysqli_query($link, $q)) {
 	$rows = array(); 
@@ -13,5 +12,8 @@ if ($result = mysqli_query($link, $q)) {
 		$rows[] = $row;
 	}     
 	print json_encode($rows); 
+}
+else {
+	print "error";
 }
 ?>

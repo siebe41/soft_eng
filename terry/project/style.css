@@ -1,0 +1,107 @@
+/* Put your css in here */
+#class-select-list {
+  border-color: #E2E4EA;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #E2E4EA;
+  outline: 0 none;
+
+}
+#class-remove-list {
+  border-color: #E2E4EA;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #E2E4EA;
+  outline: 0 none;
+
+}
+.container {
+	width: 800px !important;
+}
+#title {
+	font-size: 30px;
+}
+.buttons{
+	margin-top:10px;
+}
+#drop-container{
+	margin-top:5px;
+	margin-bottom:1px;
+}
+#top-border {
+	width:100%;
+	background-color: black; 
+	margin-bottom:5px;
+  min-width: 800px;
+}
+
+#selected-classes {
+	height: 300px;
+	overflow: auto;
+  border-color: #E2E4EA;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #E2E4EA;
+  outline: 0 none;
+	padding:10px;
+}
+
+.animate-enter, 
+.animate-leave { 
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+		-ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+} 
+
+.animate-leave.animate-leave-active,
+.animate-enter {
+    -webkit-transform: rotateX(90deg) rotateZ(90deg);
+    -moz-transform: rotateX(90deg) rotateZ(90deg);
+    -ms-transform: rotateX(90deg) rotateZ(90deg);
+    -o-transform: rotateX(90deg) rotateZ(90deg);
+    transform: rotateX(90deg) rotateZ(90deg);
+    opacity: 0;
+    height: 0px;
+}        
+
+.animate-enter.animate-enter-active,
+.animate-leave {
+    -webkit-transform: rotateX(0deg) rotateZ(0deg);
+    -moz-transform: rotateX(0deg) rotateZ(0deg);
+    -ms-transform: rotateX(0deg) rotateZ(0deg);
+    -o-transform: rotateX(0deg) rotateZ(0deg);
+    transform: rotateX(0deg) rotateZ(0deg);
+    opacity: 1;
+    height: 30px;
+}
+
+.sample-enter, 
+.sample-leave { 
+    -webkit-transition: 400ms /*cubic-bezier(0.250, 0.250, 0.750, 0.750) all*/;
+    -moz-transition: 400ms /*cubic-bezier(0.250, 0.250, 0.750, 0.750) all*/;
+		-ms-transition: 400ms /*cubic-bezier(0.250, 0.250, 0.750, 0.750) all*/;
+    -o-transition: 400ms /*cubic-bezier(0.250, 0.250, 0.750, 0.750) all*/;
+    transition: 400ms /*cubic-bezier(0.250, 0.250, 0.750, 0.750) all*/;
+    position: relative;
+    display: block;
+}
+
+.sample-leave.sample-leave-active,
+.sample-enter {
+    /*-webkit-transform: rotateX(90deg) rotateZ(90deg);
+    -moz-transform: rotateX(90deg) rotateZ(90deg);
+    -ms-transform: rotateX(90deg) rotateZ(90deg);
+    -o-transform: rotateX(90deg) rotateZ(90deg);
+    transform: rotateX(90deg) rotateZ(90deg);*/
+    opacity: 0;
+    height: 0px;
+}        
+
+.sample-enter.sample-enter-active,
+.sample-leave {
+    /*-webkit-transform: rotateX(0deg) rotateZ(0deg);
+    -moz-transform: rotateX(0deg) rotateZ(0deg);
+    -ms-transform: rotateX(0deg) rotateZ(0deg);
+    -o-transform: rotateX(0deg) rotateZ(0deg);
+    transform: rotateX(0deg) rotateZ(0deg);*/
+    opacity: 1;
+    height: 30px;
+}

@@ -1,11 +1,9 @@
 <?php
+$link = mysqli_connect('phoenixwcus.ipagemysql.com', 'softeng', 'buildmeaprototype', 'cs_soft_eng');
 
-$conm = mysql_connect('phoenixwcus.ipagemysql.com', 'softeng', 'buildmeaprototype'); 
-
-if (!$conm) { 
-    die('Could not connect: ' . mysql_error()); 
-} 
-//echo 'Connected successfully'; 
-mysql_select_db(cs_soft_eng); 
-
+/* check connection */
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
 ?>

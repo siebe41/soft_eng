@@ -26,7 +26,7 @@ function check_days($ndays,$cdays, $nstime,$cstime,$netime,$cetime){
 //days logic
 //Potential Conflicts
 //all but F check MTWRF and MTWR
-
+//echo 'Check days start<br>';
 // MWF -- MWF, MW, WF, MF, M, W, F
 if($ndays == 'MWF'){
 	if($cdays == 'MTWRF' || $cdays == 'MTWR' || $cdays == 'MWF' || $cdays == 'MF' || $cdays == 'WF' || $cdays == 'MW' || $cdays == 'M' || $cdays == 'W' || $cdays == 'F'){
@@ -101,10 +101,11 @@ else if($ndays == 'R'){
 				return check_times($nstime,$cstime,$netime,$cetime);
 	}	else return true;
 }
-else{
-	//this will only trigger if the data does not fit one of the formats above.
-	echo 'ERROR IN DATA\n';
-	return false
-}
+// else{
+	// //this will only trigger if the data does not fit one of the formats above.
+	// echo 'ERROR IN DATA\n';
+	// return false
+// }
+echo 'Check days end<br>';
 }
 ?>

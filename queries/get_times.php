@@ -11,9 +11,10 @@ white-space: pre;
 <?php
 //File to get the schedules
 include '../includes/connection.php';
-//include 'daylogic.php';
+include 'daylogic.php';
+include 'cdays.php';
 
-$array = array("COMP SCI   53 - Introduction To Programming",'COMP SCI  153 - Data Structures','COMP SCI  253 - Algorithms');
+$array = array('AERO ENG 3171 - Aerodynamics II','ARCH ENG 3201 - Structural Analysis I','AERO ENG 2360 - Dynamics');
 $stunum = rand();
 $size = count($array);
 //echo $size.'<br>'; //TESTING OUTPUT
@@ -31,7 +32,7 @@ $q = "SELECT `number` FROM `class_num` WHERE `name` = '$name'";
 $res = mysql_query($q,$conm);
 $rcount = mysql_num_rows($res); // counts the number of numbers 
 //echo $q.'<br>'; // echo for testing purposes
-//echo 'Rcount'.$rcount.'<br>';//echos for testing purposes
+echo 'Rcount'.$rcount.'<br>';//echos for testing purposes
 
 //THIS SECTION CREATES THE FIRST SCHEDULE FROM THE LIST OF CLASS NUMBERS OF THE FIRST CLASS
 while($rcount > 0){
@@ -100,26 +101,63 @@ while($count < $size){
 				echo $nstime.' '.$netime.' '.$ndays.' '.$tempc.'<br>';
 				echo $stime[$ttcount].' '.$etime[$ttcount].' '.$days[$ttcount].'<br>';
 				 $ttcount = 0;
+			
 				while($ttcount < 7){
+					//echo 'Call check days<br>';
 					$bool = check_days($ndays,$days[$ttcount],$nstime,$stime[$ttcount],$netime,$etime[$ttcount]);
+					//echo 'Check days return. '.$bool.'<br>';
+					$ttcount++;
 				}
 				
 			if($bool){
+				$tc = $count + 1;
 				$q = "INSERT INTO `schedule`(stu_num_rand,class_num,class2_num,class3_num,class4_num,class5_num,class6_num,class7_num,num_classes)";
-				$q .= " VALUES('$stunum','$car[0]','$car[1]','$car[2]','$car[3]','$car[4]','$car[5]','$car[6]','$count')";
+				$q .= " VALUES('$stunum','$car[0]','$car[1]','$car[2]','$car[3]','$car[4]','$car[5]','$car[6]','$tc')";
 				mysql_query($q,$conm);
 				echo $q.'<br>';
 			}
 				
 		}
 	}
-	if($count != $size){
-		$q = "DELETE FROM `schedule` WHERE `stu_num_rand` = '$stunum' AND `num_classes` < '$count'";
+	
+		$q = "DELETE FROM `schedule` WHERE `stu_num_rand` = '$stunum' AND `num_classes` < '$tc'";
 		mysql_query($q,$conm);
 		echo 'DELETE STEP: '.$q.'<br>';
-	}
-
+	
+	
 	$count++;
+}
+$qq = "SELECT * FROM `schedule` WHERE `stu_num_rand` = '$stunum' AND `num_classes` = '$count'";
+echo $qq.'<br>';
+$res = mysql_query($qq,$conm);
+$cc = mysql_num_rows($res);
+$ccc = 0;
+echo 'GET DAYS<br>';
+while($ccc < $cc){
+$ccc++;
+$restrow = mysql_fetch_row($res);
+			$ttcount = 0;
+			while($ttcount < 7){
+				$car[$ttcount] = $restrow[$ttcount+3];
+			}
+$days = gdays($car[0],$car[1],$car[2],$car[3],$car[4],$car[5],$car[6]);
+$day = '';
+if($days[0] == 1)
+	$day .= 'M';
+if($days[1] == 1)
+	$day .= 'T';
+if($days[2] == 1)
+	$day .= 'W';
+if($days[3] == 1)
+	$day .= 'R';
+if($days[4] == 1)
+	$day .= 'F';
+$q = "INSERT INTO `schedule`(stu_num_rand,days,class_num,class2_num,class3_num,class4_num,class5_num,class6_num,class7_num,num_classes)";
+$q .= " VALUES('$stunum','$day','$car[0]','$car[1]','$car[2]','$car[3]','$car[4]','$car[5]','$car[6]','$count')";
+mysql_query($q,$conm);
+echo $q;
+$q = "DELETE FROM `schedule` WHERE `stu_num_rand` = '$stunum' AND `days` = ''";
+mysql_query($q);
 }
 ?>
 
