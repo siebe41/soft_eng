@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Class Scheduler</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<script src="http://code.angularjs.org/1.1.5/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="scheduler.js"></script>
+	</head>
+	<body ng-app="scheduler" data-ng-controller="SimpleController">
+    <div id="top-border">
+      <div class="container">
+				<div class="row">
+					<div class="col-xs-6">
+						<a class="navbar-brand" href="index.html" style="font-size:30px;">Class Scheduler</a>
+					</div>
+					<!--
+					<div style="float:right;">
+						<ul class="nav nav-pills" role="tablist">
+							<li class="active"><a href="#">Page 1</a></li>
+							<li><a href="#">Page 2</a></li>       
+						</ul>
+					</div>
+					-->
+				</div>
+			</div>	
+		</div>
+		<div class="container" id="drop-container">
+			<div class="dropdown">
+				<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Choose a Major
+				<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-repeat="z in majors" value = "major" ng-click="getClassesByMajor(z);">{{ z[0] }}</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6">
+					<select multiple class="form-control" id="class-select-list" size ="15">
+						<option ng-repeat="x in names">{{ x[0] }}</option>
+					</select>
+				</div>
+				<div class="col-xs-6">
+					<div id="selected-classes">
+						<label ng-animate="'animate'" ng-repeat="name in values">
+							<input type="checkbox" value="{{name}}" ng-click="toggleSelection(name);" ng-checked="selection.indexOf(name) > -1">{{name}}
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6">       
+					<button type="button" class="btn btn-primary buttons" id="add-button" ng-click="getSelectedValues()"><span class="glyphicon glyphicon-plus"></span>Add Classes</button>      
+				</div>
+				<div class="col-xs-6">       
+					<button type="button" class="btn btn-primary buttons" id="schedule-button">Generate Schedules</button>  
+					<button type="button" class="btn btn-primary buttons" ng-click="deleteClasses()"><span class="glyphicon glyphicon-remove"></span>Delete Classes</button>   
+					<button type="button" class="btn btn-primary buttons" ng-click="selectAll();">Select All</button>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-xs-12">
+				<ul>
+					<li ng-animate="'sample'"ng-model="message" ng-repeat="x in alreadyAddedClasses" style="color:red; list-style:none;" class="sample-show-hide">
+						Already added {{x}}
+					</li>
+				</ul> 
+			</div>
+		</div>
+	 
+	</body>
+</html>
