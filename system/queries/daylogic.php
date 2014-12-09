@@ -1,10 +1,4 @@
 <?php
-//THIS FILE IS USED TO PROVIDE THE check_times and check_days FUNCTIONS
-//THIS WILL CHECK FOR CONFLICTS BETWEEN CLASSES
-//THIS WORKS BY FIRST CHECKING THE DAY CONFLICTS AND IF IT FINDS A CONFLICT ON DAYS IT THEN CHECKS TO SEE IF THERE IS A TIME CONFLICT
-//RETURNS TRUE IF NO CONFLICT
-//RETURNS FALSE IF CONFLICT
-
 
 //function to check times
 function check_times($t1, $t2, $t3,$t4){
@@ -22,6 +16,10 @@ function check_times($t1, $t2, $t3,$t4){
 	else if($t3 == $t4)
 		return false;
 	else if(($t1 > $t2) && ($t1 < $t4))
+		return false;
+	else if(($t3 > $t2) && ($t3 < $t4))
+		return false;
+	else if(($t1 > $t2) && ($t3 < $t4))
 		return false;
 	else
 		return true;

@@ -1,6 +1,4 @@
 <?PHP
-
-//FILE USED TO TEST THE METHOD OF PASSING THE DATA FROM FRONT END TO BACK END
 $tableData = $_POST['tableData'];
 $array = json_decode($tableData,TRUE);
 $count = count($array);

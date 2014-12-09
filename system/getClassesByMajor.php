@@ -1,6 +1,10 @@
 <?php
 include 'includes/connection.php';
 
+
+
+
+
 $major = $_POST['major'];
 $q = "SELECT DISTINCT `name`
 FROM `class_num`

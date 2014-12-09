@@ -1,7 +1,4 @@
 <?php
-
-//SIMPLE FILE USED TO CREATE TEST DATA ORIGINALLY
-//THIS FILE IS NO LONGER USED
 include '../includes/connection.php';
 $q = "SELECT `name` FROM `class_num` WHERE `number` = '70409'";
 $res = mysql_query($q,$conm);
